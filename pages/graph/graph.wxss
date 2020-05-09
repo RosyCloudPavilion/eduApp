@@ -62,3 +62,23 @@ canvas{
   display: block;
   font-weight: bold;
 }
+
+.pcomp{
+  display: block;
+  width: 100%;
+}
+
+.pcomp_title{
+  color:#1e50a2; 
+  display: block;
+  width: 100%;
+  font-weight: bold;
+}
+
+.bchain{
+  margin: 20rpx 20rpx;
+  font-size: 25rpx;
+  display: block;
+  float: right;
+  color: #1800a3;
+}

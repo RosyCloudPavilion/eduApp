@@ -112,6 +112,12 @@
 					"pathName": "pages/project/project",
 					"query": "id=708",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/report/report",
+					"pathName": "pages/report/report",
+					"scene": null
 				}
 			]
 		}

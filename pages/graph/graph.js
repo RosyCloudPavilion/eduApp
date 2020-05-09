@@ -123,6 +123,12 @@ Page({
     })
   },
 
+  report(){
+    wx.navigateTo({
+      url: '../report/report?id=' + comp_id
+    })
+  },
+
   onLoad: function (option) {
     var _this = this;
     comp_id  = option.id
@@ -154,8 +160,8 @@ Page({
             })
 
             var desc = [];
-            desc.push("该企业与" + res.data.riskComp[0][0] + ", " + res.data.riskComp[1][0]+"在多个项目中共同投标");
-            desc.push("该企业参与的" + res.data.riskProject[0][0] + ", " + res.data.riskProject[1][0] + "项目中企业关联性较高");
+            desc.push({"type":"合作企业风险","label":"该企业与" + res.data.riskComp[0][0] + ", " + res.data.riskComp[1][0]+"在多个项目中共同投标"});
+            desc.push({ "type": "参与项目风险", "label":"该企业参与的" + res.data.riskProject[0][0] + ", " + res.data.riskProject[1][0] + "项目中企业关联性较高"});
             _this.setData({
               companys: res.data.riskComp,
               projects: res.data.riskProject,
@@ -167,10 +173,34 @@ Page({
           }
         });
       },1000)
+    this.getProjectByCompId(option.id);
     this.getConsensusData(option.id)
     if (option.recordNo!=0){
       this.getKexinData(option.recordNo);
     }
+  },
+
+  getProjectByCompId: function (id) {
+    var _this = this;
+    wx.request({
+      url: 'https://www.mylittlefox.art/api/EDU/getProjectByCompId?id='+id,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        res.data.projects.forEach(project => {
+          var relate = "";
+          var relatestr = project.related_comp.replace(/'/g, '"');
+          JSON.parse(relatestr).forEach(pro => {
+            relate = relate + "\n" + pro.name;
+          })
+          project["relatedComp"] = relate;
+        })
+        _this.setData({
+          historyProjects: res.data.projects,
+        })
+      }
+    })
   },
 
   toVisible(){

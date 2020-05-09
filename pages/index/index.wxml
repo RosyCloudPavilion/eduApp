@@ -1,7 +1,7 @@
 <view>
   <view class="header">
-  <p class="head">企业包打听｜</p>
-  <p class="summary">为企业提供全方位风险预警服务，以可视可互动的形式交互</p>
+  <p class="head">风险隐患包打听｜</p>
+  <p class="summary">区块链溯源、穿透式挖掘\n全要素、可视化\n投资、做交易必备神器</p>
   </view>
   <van-tabs active="{{ active }}" bind:change="onChange">
     <van-tab title="查公司">
@@ -22,6 +22,7 @@
         <p>{{comp.risk!=null?comp.risk:'暂无'}}</p>
       </view>
     </van-card>
+        <p class="bchain">*数据取自可信中国区块链</p>
       </van-tab>
     <van-tab title="查项目">
          <van-search
@@ -43,6 +44,7 @@
           <p>{{project.risk!=null?project.risk:'暂无'}}</p>
         </view>
       </van-card>
+          <p class="bchain">*数据取自可信中国区块链</p>
       </van-tab>
 
       <van-tab title="查事件">
@@ -66,6 +68,7 @@
           <p>{{event.time}}</p>
         </view>
       </van-card>
+          <p class="bchain">*数据取自可信中国区块链</p>
       </van-tab>
   </van-tabs>  
 </view>

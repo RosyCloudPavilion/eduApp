@@ -8,6 +8,7 @@
     "pages/consensus/consensus",
     "pages/holder/holder",
     "pages/tourong/tourong",
+    "pages/report/report",
     "pages/logs/logs"
   ],
   "window": {
